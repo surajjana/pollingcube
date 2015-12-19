@@ -367,7 +367,7 @@ def all_polls():
 
 	cur = conn.cursor(cursor_factory=RealDictCursor)
 
-	sql = "SELECT * FROM public.\"Polls\" WHERE p_id='abc1_2'"
+	sql = "SELECT * FROM public.\"Polls\" WHERE p_id='abc1_2' AND p_id='sonu_1'"
 
 	cur.execute(sql)
 
