@@ -77,7 +77,7 @@ def signup(username,passwd):
 		return "{\"login\":{\"status\":\"0\"}}"
 
 
-@app.route('/new_poll/<p_user>/<p_name>/<p_location>')
+@app.post('/new_poll')
 def new_poll(p_user,p_name,p_location):
 
 	response.headers['Access-Control-Allow-Origin'] = '*'
@@ -94,36 +94,38 @@ def new_poll(p_user,p_name,p_location):
 
 	cur = conn.cursor()
 
-	var1 = p_user
-	var2 = str(p_name)
-	var3 = p_location
+	var1 = request.forms.get('p_user')
+	var2 = request.forms.get('p_name')
+	var3 = request.forms.get('p_location')
+
+	return str(var2)
 
 	
-	sql = "SELECT COUNT(*) FROM public.\"Polls\" WHERE p_user='"+str(var1)+"'"
+#	sql = "SELECT COUNT(*) FROM public.\"Polls\" WHERE p_user='"+str(var1)+"'"
 
-	cur.execute(sql)
+#	cur.execute(sql)
 
-	res = cur.fetchone()
-	res = res[0]
+#	res = cur.fetchone()
+#	res = res[0]
 
-	p_id = str(var1)+"_"+str(res + 1)
-	p_image = image_url+p_id+".jpg"
+#	p_id = str(var1)+"_"+str(res + 1)
+#	p_image = image_url+p_id+".jpg"
 
-	os.environ['TZ'] = 'Asia/Calcutta'
-	time.tzset()
+#	os.environ['TZ'] = 'Asia/Calcutta'
+#	time.tzset()
 
-	p_date = str(time.strftime("%d-%m-%Y"))
-	p_time = str(time.strftime("%H:%M:%S"))
+#	p_date = str(time.strftime("%d-%m-%Y"))
+#	p_time = str(time.strftime("%H:%M:%S"))
 
-	sql = "INSERT INTO public.\"Polls\" VALUES ('"+p_id+"','"+str(var1)+"','"+str(var2)+"','"+str(p_location)+"','"+p_image+"',0,0,'"+p_date+"','"+p_time+"')"
+#	sql = "INSERT INTO public.\"Polls\" VALUES ('"+p_id+"','"+str(var1)+"','"+str(var2)+"','"+str(p_location)+"','"+p_image+"',0,0,'"+p_date+"','"+p_time+"')"
 
-	cur.execute(sql)
+#	cur.execute(sql)
 
-	conn.commit()
-	cur.close()
-	conn.close()
+#	conn.commit()
+#	cur.close()
+#	conn.close()
 
-	return "{\"new_poll\":{\"status\":\"1\"}}"
+#	return "{\"new_poll\":{\"status\":\"1\"}}"
 
 @app.route('/up_vote/<p_user>/<p_name>')
 def up_vote(p_user,p_name):
