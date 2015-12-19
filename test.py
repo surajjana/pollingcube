@@ -95,7 +95,7 @@ def new_poll(p_user,p_name,p_location):
 	cur = conn.cursor()
 
 	var1 = p_user
-	var2 = p_name
+	var2 = str(p_name)
 	var3 = p_location
 
 	
