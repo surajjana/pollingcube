@@ -4,12 +4,14 @@ import psycopg2
 import urlparse
 import hashlib
 import json
-from bottle import Bottle
+from bottle import Bottle, response
 from psycopg2.extras import RealDictCursor
 
 app = Bottle(__name__)
 urlparse.uses_netloc.append("postgres")
 url = urlparse.urlparse(os.environ["DATABASE_URL"])
+
+
 
 @app.route('/signup/<username>/<email>/<phone_no>/<passwd>')
 def signup(username,email,phone_no,passwd):
@@ -43,6 +45,9 @@ def signup(username,email,phone_no,passwd):
 
 @app.route('/login/<username>/<passwd>')
 def signup(username,passwd):
+
+	response.headers['Access-Control-Allow-Origin'] = '*'
+
 	conn = psycopg2.connect(
     database=url.path[1:],
     user=url.username,
