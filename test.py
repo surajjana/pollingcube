@@ -77,7 +77,7 @@ def signup(username,passwd):
 		return "{\"login\":{\"status\":\"0\"}}"
 
 
-@app.get('/new_poll')
+@app.post('/new_poll')
 def new_poll():
 
 	response.headers['Access-Control-Allow-Origin'] = '*'
