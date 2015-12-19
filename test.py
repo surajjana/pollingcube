@@ -4,7 +4,7 @@ import psycopg2
 import urlparse
 import hashlib
 import json
-from bottle import Bottle, response
+from bottle import Bottle, response, request
 from psycopg2.extras import RealDictCursor
 
 app = Bottle(__name__)
