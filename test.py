@@ -79,6 +79,9 @@ def signup(username,passwd):
 
 @app.route('/new_poll/<p_user>/<p_name>/<p_location>')
 def new_poll(p_user,p_name,p_location):
+
+	response.headers['Access-Control-Allow-Origin'] = '*'
+
 	conn = psycopg2.connect(
     database=url.path[1:],
     user=url.username,
@@ -120,7 +123,7 @@ def new_poll(p_user,p_name,p_location):
 	cur.close()
 	conn.close()
 
-	return "1"
+	return "{\"new_poll\":{\"status\":\"1\"}}"
 
 @app.route('/up_vote/<p_user>/<p_name>')
 def up_vote(p_user,p_name):
