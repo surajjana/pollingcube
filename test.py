@@ -78,7 +78,7 @@ def signup(username,passwd):
 
 
 @app.get('/new_poll')
-def new_poll(p_user,p_name,p_location):
+def new_poll():
 
 	response.headers['Access-Control-Allow-Origin'] = '*'
 
