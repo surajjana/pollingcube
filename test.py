@@ -67,9 +67,9 @@ def signup(username,passwd):
 	res = str(res[0])
 
 	if new_passwd == res :
-		return "[{\"status\":\"1\"}]"
+		return "{ \"login\":[{\"status\":\"1\"}]}"
 	else :
-		return "[{\"status\":\"0\"}]"
+		return "{ \"login\":[{\"status\":\"0\"}]}"
 
 
 @app.route('/new_poll/<p_user>/<p_name>/<p_location>')
