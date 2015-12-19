@@ -357,6 +357,9 @@ def up_vote(p_user,p_name):
 
 @app.route('/all_polls')
 def all_polls():
+
+	response.headers['Access-Control-Allow-Origin'] = '*'
+	
 	conn = psycopg2.connect(
     database=url.path[1:],
     user=url.username,
