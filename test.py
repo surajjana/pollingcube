@@ -117,7 +117,7 @@ def new_poll():
 	p_date = str(time.strftime("%d-%m-%Y"))
 	p_time = str(time.strftime("%H:%M:%S"))
 
-	sql = "INSERT INTO public.\"Polls\" VALUES ('"+p_id+"','"+str(var1)+"','"+str(var2)+"','"+str(p_location)+"','"+p_image+"',0,0,'"+p_date+"','"+p_time+"')"
+	sql = "INSERT INTO public.\"Polls\" VALUES ('"+p_id+"','"+str(var1)+"','"+str(var2)+"','"+str(var3)+"','"+p_image+"',0,0,'"+p_date+"','"+p_time+"')"
 
 	cur.execute(sql)
 
