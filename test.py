@@ -129,6 +129,9 @@ def new_poll():
 
 @app.post('/up_vote')
 def up_vote():
+
+	response.headers['Access-Control-Allow-Origin'] = '*'
+
 	conn = psycopg2.connect(
     database=url.path[1:],
     user=url.username,
@@ -243,6 +246,9 @@ def up_vote():
 
 @app.post('/down_vote')
 def up_vote():
+
+	response.headers['Access-Control-Allow-Origin'] = '*'
+	
 	conn = psycopg2.connect(
     database=url.path[1:],
     user=url.username,
