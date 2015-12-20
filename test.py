@@ -177,7 +177,7 @@ def up_vote(p_user,p_name):
 		cur.close()
 		conn.close()
 
-		return "1"
+		return "{\"up_vote\":{\"status\":\"1\"}}"
 
 		
 
@@ -234,10 +234,10 @@ def up_vote(p_user,p_name):
 			cur.close()
 			conn.close()
 
-			return "1"
+			return "{\"up_vote\":{\"status\":\"1\"}}"
 
 		else :
-			return "0"
+			return "{\"up_vote\":{\"status\":\"0\"}}"
 
 
 
@@ -291,7 +291,7 @@ def up_vote(p_user,p_name):
 		cur.close()
 		conn.close()
 
-		return "1"
+		return "{\"down_vote\":{\"status\":\"1\"}}"
 
 		
 
@@ -348,10 +348,10 @@ def up_vote(p_user,p_name):
 			cur.close()
 			conn.close()
 
-			return "1"
+			return "{\"down_vote\":{\"status\":\"1\"}}"
 
 		else :
-			return "0"
+			return "{\"down_vote\":{\"status\":\"0\"}}"
 
 
 
