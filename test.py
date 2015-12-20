@@ -127,8 +127,8 @@ def new_poll():
 
 	return "{\"new_poll\":{\"status\":\"1\"}}"
 
-@app.route('/up_vote/<p_user>/<p_name>')
-def up_vote(p_user,p_name):
+@app.post('/up_vote')
+def up_vote():
 	conn = psycopg2.connect(
     database=url.path[1:],
     user=url.username,
@@ -139,8 +139,8 @@ def up_vote(p_user,p_name):
 
 	cur = conn.cursor()
 
-	var1 = p_user
-	var2 = p_name
+	var1 = request.forms.get('p_user')
+	var2 = request.forms.get('p_name')
 
 	sql = "SELECT EXISTS(SELECT p_up_vote FROM public.\"Votes\" WHERE p_user='"+str(var1)+"' AND p_name='"+str(var2)+"')"
 
@@ -241,8 +241,8 @@ def up_vote(p_user,p_name):
 
 
 
-@app.route('/down_vote/<p_user>/<p_name>')
-def up_vote(p_user,p_name):
+@app.post('/down_vote')
+def up_vote():
 	conn = psycopg2.connect(
     database=url.path[1:],
     user=url.username,
@@ -253,8 +253,8 @@ def up_vote(p_user,p_name):
 
 	cur = conn.cursor()
 
-	var1 = p_user
-	var2 = p_name
+	var1 = request.forms.get('p_user')
+	var2 = request.forms.get('p_name')
 
 	sql = "SELECT EXISTS(SELECT p_up_vote FROM public.\"Votes\" WHERE p_user='"+str(var1)+"' AND p_name='"+str(var2)+"')"
 
